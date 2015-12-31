@@ -13,6 +13,9 @@ Hello world. *Some bold text*
 
 ##link
 
+http://github.com - automatic!
+[GitHub](http://github.com)
+
 ##image
 
 ![GitHub Logo](/images/logo.png)
