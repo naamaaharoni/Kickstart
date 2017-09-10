@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Naama Aharoni personal website</title>
+        <link href="styles/style.css" rel="stylesheet">
+        <script type="text/javascript" src="http://naamaaharoni.github.io/Kickstart/website/Wix.js"></script>
+        <script type="text/javascript" >
+            function myFunction() {
+               Wix.navigateTo(
+                {type: "ExternalLink", target: "_blank", url: "http://www.ynet.co.il"},
+                   function(a){console.log(a)},
+                   function(a){console.log(a)}
+               )
+            }
+        </script>
+    </head>
+    <body>
+        <header class="site-header">
+            <a href="index.html" class="site-logo">
+                <img class="image" src="images/logo.png" width="120" height="114" alt="penguin logo"/>
+                <img src="images/bandana.png" width="70" height="41" alt="black pirate head bandana" class="image head-bandana-img">
+                <img src="images/Red_Bandana.png" width="60" height="59" alt="red neck bandana" class="image neck-bandana-img">
+            </a>
+            <div class="talkbubble logo-talkbubble">Howdy Cowboy! Have a look around!</div>
+            <nav class="site-nav cf">
+                <div class="menu-wrapper">
+                    <a class="menu-hamburger"><img class="image" src="images/menu_white.png" width="35px" height="35" alt="site menu"></a>
+                    <ul class="list list-unstyled">
+                        <li class="list-item"><a href="about.html">About</a></li>
+                        <li class="list-item"><a href="gallery.html">Gallery</a></li>
+                        <li class="list-item"><a href="contact.html">Contact</a></li>
+                        <li class="list-item"><a href="experiments.html">Experiments</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <h1 class="title-primary">Naama Aharoni personal website</h1>
+            <h2 class="title-secondary">Get to know me!</h2>
+            <p>
+                My name is <strong>Naama Aharoni</strong> and this is my personal website as part of the Kickstart program at <em>Wix</em>.
+            </p>
+            <p>
+                I was born in 1987 and raised in <mark>Givatayim</mark>.<br>
+                I served in the intelligence core for 2 years. <br>
+                Some <sup>superscripted</sup> text with some <sub>subscripted</sub> text.
+                <a src="http://google.com">google</a>
+            </p>
+            <p>
+                I like traveling abroad and i've been to South America and twice to the Far East.
+            </p>
+            <button onclick="myFunction()">TEST</button>
+        </main>
+        <footer class="footer site-footer">
+            <span>&copy; 2016 Naama Aharoni –  All rights reserved</span>
+        </footer>
+    </body>
+</html>

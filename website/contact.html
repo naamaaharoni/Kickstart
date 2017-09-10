@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Contact Naama Aharoni</title>
+        <link href="styles/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="site-header">
+            <a href="index.html" class="site-logo">
+                <img class="image" src="images/logo.png" width="120" height="114" alt="penguin logo"/>
+                <img src="images/bandana.png" width="70" height="41" alt="black pirate head bandana" class="image head-bandana-img">
+                <img src="images/Red_Bandana.png" width="60" height="59" alt="red neck bandana" class="image neck-bandana-img">
+            </a>
+            <div class="talkbubble logo-talkbubble">Don't be shy, send me a message!</div>
+            <nav class="site-nav cf">
+                <div class="menu-wrapper">
+                    <a class="menu-hamburger"><img class="image" src="images/menu_white.png" width="35px" height="35" alt="site menu"></a>
+                    <ul class="list list-unstyled">
+                        <li class="list-item"><a href="about.html">About</a></li>
+                        <li class="list-item"><a href="gallery.html">Gallery</a></li>
+                        <li class="list-item"><a href="contact.html">Contact</a></li>
+                        <li class="list-item"><a href="experiments.html">Experiments</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <h1 class="title-primary">Leave Naama a Comment</h1>
+            <form action="" method="post" class="form">
+                <fieldset>
+                    <legend>User Info</legend>
+                    <label class="form-label"><span>Name:</span><input type="text" name="name" placeholder="John Doe" class="form-control" required autofocus></label>
+                    <label class="form-label"><span>Email:</span><input type="email" name="email" placeholder="name@domain.com" class="form-control" required></label>
+                    <label class="form-label"><span>Phone:</span><input type="tel" name="phone" placeholder="+972 545272963" class="form-control" pattern='\+\d{3}\s\d{9}' ></label>
+                    <label class="form-label"><span>Website:</span><input type="url" name="website" placeholder="http://www.domain.com" class="form-control" pattern="https?://.+"></label>
+                    <label class="form-label"><span>Age:</span><input type="number" name="age" min="1" max="120" placeholder="28" class="form-control"></label>
+                    <label class="form-label"><span>Birthday:</span> <input type="date" name="birthday" class="form-control"></label>
+                    <label class="form-label"><span>Site satisfaction (0-100):</span><input type="range" name="satisfaction" min="1" max="100" step="1" class="form-control"></label>
+                </fieldset>
+                <fieldset>
+                    <legend>Comment Info</legend>
+                    <label class="form-label"><span>Subject:</span>
+                        <select name="subject" class="form-control">
+                            <option value="hi">Just to say hi</option>
+                            <option value="bug">Found a bug on your site</option>
+                            <option value="partnership">I’d like to work with you</option>
+                        </select>
+                    </label>
+                    <label class="form-label"><span>Comment:</span><textarea name="comment" rows="10" placeholder="Add your comment here" class="form-control" required></textarea></label>
+                </fieldset>
+                <input type="submit" name="submit" value="Send" class="btn btn-submit">
+            </form>
+        </main>
+        <footer class="footer site-footer">
+            <span>&copy; 2016 Naama Aharoni –  All rights reserved</span>
+        </footer>
+    </body>
+</html>

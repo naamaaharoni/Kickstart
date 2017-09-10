@@ -1,0 +1,633 @@
+html {
+    font: 62.5% Arial, sans-serif;
+    color: #333;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    max-width: 960px;
+    min-width: 320px;
+    margin: 0 auto;
+    font-size: 1.6em;
+    padding-bottom: 40px;
+}
+
+main {
+    padding: 0 15px;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.title-primary {
+    font-size: 3rem;
+
+     /* naama- experimental new styling
+    text-align: center;
+    margin-top: 0;
+    padding: 10px;
+    background: #86BDBD;
+    color: white;
+    border-radius: 0px 0px 10px 10px; */
+}
+
+.title-secondary {
+    font-size: 2rem;
+    color: #4682b4;
+}
+
+.title-tertiary {
+    font-size: 1.7rem;
+}
+
+.list-unstyled {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.btn {
+    color: white;
+    background: #4682b4;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-size: 1.6rem;
+}
+
+.btn:active {
+    outline: none;
+}
+
+.btn-submit {
+    display: block;
+}
+
+/*--------------------- Anchors ---------------------*/
+
+a {
+    text-decoration: none;
+}
+
+a:link,
+a:visited {
+    transition: color 0.3s;
+    color: #000000;
+}
+
+a:hover {
+    color: #08b3c5;
+}
+
+a:active {
+    color: #ffa500;
+}
+
+a[href^="http://"]::after {
+    content: " \27A4";
+}
+
+/*--------------------- Header ---------------------*/
+
+/* logo */
+
+.site-header {
+    position: relative;
+}
+
+.site-logo {
+    position: absolute;
+    padding-top: 10px;
+    top: -76px;
+}
+
+.head-bandana-img {
+    position: absolute;
+    top: 5px;
+    left: 14px;
+}
+
+.neck-bandana-img {
+    position: absolute;
+    top: 44px;
+    left: 34px;
+    transform: rotate(10deg);
+}
+
+.site-logo:hover ~ .logo-talkbubble {
+    opacity: 1;
+}
+
+.logo-talkbubble {
+    transition: opacity 0.5s ease-in;
+    position: absolute;
+    top: -62px;
+    left: 93px;
+    opacity: 0;
+}
+
+.talkbubble {
+    width: 180px;
+    padding: 10px 10px;
+    text-align: center;
+    background: #fc9d00;
+}
+
+.talkbubble:before {
+    content:"";
+    position: absolute;
+    right: 97%;
+    top: 24px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-right: 20px solid #fc9d00;
+    border-bottom: 13px solid transparent;
+}
+
+
+/* vertical site nav */
+
+.site-nav {
+    margin-top: 87px;
+    background: #4782b3;
+    background: linear-gradient(#81b4a7, #4782b3);
+    /*border-radius: 0px 0px 10px 10px;*/
+}
+
+.site-nav .list a {
+    display: inline-block;
+    height: 35px;
+    width: 100%;
+    line-height: 35px;
+    text-align: center;
+}
+
+.site-nav .list a:link ,
+.site-nav .list a:visited {
+    color: white;
+}
+
+.site-nav .list a:before,
+.site-nav .list a:before {
+    transition: transform 0.3s, opacity 0.2s;
+    opacity: 0;
+    margin-right: 10px;
+    content: '[';
+    transform: translateX(20px);
+}
+
+.site-nav .list a:hover:before,
+.site-nav .list a:active:before {
+    opacity: 1;
+    margin-right: 10px;
+    content: '[';
+    transform: translateX(0px);
+}
+
+.site-nav .list a:after,
+.site-nav .list a:after {
+    transition: transform 0.3s, opacity 0.2s;
+    opacity: 0;
+    margin-left: 10px;
+    content: ']';
+    transform: translateX(-20px);
+}
+
+.site-nav .list a:hover:after,
+.site-nav .list a:active:after {
+    opacity: 1;
+    margin-left: 10px;
+    content: ']';
+    transform: translateX(0px);
+}
+
+.site-nav .list-item {
+    clear: both;
+    display: none;
+    border-top: 1px solid white;
+}
+
+.menu-hamburger {
+    float: right;
+    padding-right: 10px;
+    height: 35px;
+}
+
+.menu-wrapper:hover .list .list-item {
+    display: block;
+    text-align: center;
+}
+
+/* horizontal site-nav */
+@media screen and (min-width: 650px) {
+    .menu-hamburger {
+        display: none;
+    }
+    .site-nav {
+        padding-left: 130px;
+    }
+    .site-nav .list {
+        display: block;
+    }
+    .site-nav .list-item {
+        display: block;
+        float: left;
+        clear: none;
+        border-top: none;
+    }
+    .site-nav .list a {
+        width: 120px;
+    }
+}
+
+/*--------------------- Footer ---------------------*/
+
+.footer {
+    font-size: 0.8em;
+}
+
+.site-footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    padding: 5px;
+    border-top: 1px solid black;
+}
+
+/*--------------------- Gallery ---------------------*/
+
+.gallery .image {
+    border: 2px solid #08b3c5;
+    border-radius: 8px;
+    width: 100%;
+    transition: transform 0.5s;
+}
+
+.gallery .image:hover {
+    transform: scale(1.2);
+}
+
+.gallery .list {
+    text-align: center;
+}
+
+.gallery .list-item {
+    display: block;
+}
+
+.gallery .figure {
+    padding: 0;
+    margin: 2px 2px 15px;
+}
+
+@media screen and (min-width: 600px) {
+    .gallery .list-item {
+        display: inline-block;
+        width: 32%;
+    }
+    .gallery .figure {
+        margin: 2px;
+    }
+}
+
+/*--------------------- Contact Form ---------------------*/
+
+.form {
+    width: 50%;
+    min-width: 290px;
+    margin: 0 auto;
+}
+
+.form-label {
+    display: block;
+    margin: 15px;
+}
+
+.form-label span {
+    margin-right: 10px;
+}
+
+fieldset {
+    margin: 15px 0;
+    border: 1px solid #4682b4;
+    border-radius: 5px;
+}
+
+legend {
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: white;
+    background: #4682b4;
+}
+
+.form-control {
+    width: 200px;
+    font-size: 90%;
+    border: 1px solid #4682b4;
+    float: right;
+}
+
+.form-control:hover {
+    border: 1px solid #000000;
+}
+
+.form-control:focus {
+    background: #add8e6;
+    outline: none;
+}
+
+/*--------------------- Blockquote---------------------*/
+
+.blquote {
+    background: #f9f9f9;
+    border-left: 10px solid #08b3c5;
+    padding: 10px;
+    font-family: 'Poiret One', cursive;
+    font-weight: 900;
+}
+
+.blquote::before {
+    content: "\201C";
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/*--------------------- Google Logo ---------------------*/
+
+
+.google {
+    font-family: 'Product Sans', Arial, sans-serif;
+    font-size: 84px;
+    margin: 0;
+}
+
+.google-g1 {
+    color: rgba(66, 133, 244, 0.7);
+    animation-delay: 0.1s;
+}
+
+.google-g2 {
+    color: rgba(66, 133, 244, 0.7);
+    animation-delay: 0.2s;
+}
+
+.google-o1 {
+    color: rgba(234, 67, 53, 0.7);
+    animation-delay: 0.3s;
+}
+
+.google-o2 {
+    color: rgba(251, 188, 5, 0.7);
+    animation-delay: 0.4s;
+}
+
+.google-l {
+    color: rgba(52, 168, 83, 0.7);
+    animation-delay: 0.5s;
+}
+
+.google-e {
+    color: rgba(234, 67, 53, 0.7);
+    margin-left: -20px;
+    animation-delay: 0.6s
+}
+
+.rotate {
+    animation: rotating 1.5s cubic-bezier(.28,.29,.39,1.36) infinite;
+    transform-origin: 50% 60%;
+    display: inline-block;
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ping {
+    animation: ping 1.5s cubic-bezier(.11,.44,.43,1.05) infinite;
+    transform-origin: 50% 60%;
+    display: inline-block;
+    animation-delay: 0.07s;
+}
+
+@keyframes ping {
+    0% {
+        transform: translate(0,0) rotate(0deg);
+    }
+    50% {
+        transform: translate(500px,70px) rotate(180deg);
+    }
+    100% {
+        transform: translate(0,0) rotate(360deg);
+    }
+
+}
+
+/*--------------------- Experiments ---------------------*/
+
+.spaced-text {
+    letter-spacing: 0.2em;
+    word-spacing: 1.8em;
+}
+
+.block-test {
+    display: block;
+    background: rgb(144, 238, 144);
+}
+
+.display-inline {
+    display: inline;
+}
+
+.relative-test {
+    width: 200px;
+    height: 100px;
+    background: green;
+    position: relative;
+}
+
+.absolute-test {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    background: red;
+    top: 10px;
+    left: 20px;
+}
+
+.general-div {
+    width: 200px;
+    height: 100px;
+    background: yellow;
+}
+
+.zindex-test {
+    width: 200px;
+    height: 100px;
+    background: blue;
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    z-index: -1;
+    margin-bottom: 100px;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.overflow-test {
+    overflow: auto;
+    width: 300px;
+    height: 200px;
+}
+
+.div1-test {
+    display: inline-block;
+    width: 50%;
+    min-width: 250px;
+    height: 100px;
+    background: green;
+}
+
+.div2-test {
+    background: yellow;
+    height: 100px;
+    width: 50%;
+    display: inline-block;
+}
+
+/*--------------------- Responsive Design ---------------------*/
+
+@media screen and (min-width: 550px) {
+    .mostlyfluid .earlylife,
+    .mostlyfluid .career {
+        float: left;
+        width: 50%;
+    }
+}
+
+.columndrop {
+    max-width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+    .columndrop .intro {
+        width: 75%;
+        padding: 0;
+        float: left;
+    }
+
+    .columndrop .earlylife {
+        width: 25%;
+        float: left;
+    }
+
+    .columndrop .career {
+        clear: both;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .columndrop .intro {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .columndrop .earlylife {
+        margin-left: -75%;
+    }
+
+    .columndrop .career {
+        float: right;
+        width: 25%;
+        clear: none;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .layoutshifter .intro {
+        float: left;
+        width: 30%;
+    }
+
+    .layoutshifter .earlylife,
+    .layoutshifter .career {
+        float: left;
+        width: 70%;
+    }
+}
+
+/*--------------------- Off Canvas Left ---------------------*/
+
+.offcanvas .intro {
+    display: none;
+}
+
+.offcanvas input[type=checkbox] {
+    opacity: 0;
+}
+
+.offcanvas input[type=checkbox]:checked ~ .intro {
+    display: block;
+    width: 300px;
+    float: left;
+}
+
+.offcanvas .earlylife {
+    width: 100%;
+}
+
+.offcanvas input[type=checkbox]:checked ~ .earlylife {
+    margin-left: 301px;
+}
+
+@media screen and (min-width: 600px) {
+    .offcanvas .toggle {
+        display: none;
+    }
+
+    .offcanvas .intro {
+        display: block;
+        float: left;
+        width: 30%;
+    }
+
+    .offcanvas input[type=checkbox]:checked ~ .intro {
+        width: 30%;
+    }
+
+    .offcanvas .earlylife {
+        float: left;
+        width: 68%;
+        clear: none;
+    }
+
+    .offcanvas input[type=checkbox]:checked ~ .earlylife {
+        margin-left: 0;
+    }
+}
+
+
+

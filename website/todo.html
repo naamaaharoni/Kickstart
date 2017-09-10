@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>To Do</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="styles/style.css" rel="stylesheet">
+        <link href="styles/todo.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="site-header">
+            <a href="index.html" class="site-logo">
+                <img class="image" src="images/logo.png" width="120" height="114" alt="penguin logo"/>
+                <img src="images/bandana.png" width="70" height="41" alt="black pirate head bandana"
+                     class="image head-bandana-img">
+                <img src="images/Red_Bandana.png" width="60" height="59" alt="red neck bandana"
+                     class="image neck-bandana-img">
+            </a>
+            <div class="talkbubble logo-talkbubble">See some cool Kickstart experiments</div>
+            <nav class="site-nav cf">
+                <div class="menu-wrapper">
+                    <a class="menu-hamburger"><img class="image" src="images/menu_white.png" width="35px" height="35"
+                                                   alt="site menu"></a>
+                    <ul class="list list-unstyled">
+                        <li class="list-item"><a href="about.html">About</a></li>
+                        <li class="list-item"><a href="gallery.html">Gallery</a></li>
+                        <li class="list-item"><a href="contact.html">Contact</a></li>
+                        <li class="list-item"><a href="experiments.html">Experiments</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <h1>To Do</h1>
+            <section id="todo">
+                <label class="display-block">
+                    <span>Sort by </span>
+                    <select id="todoSorting">
+                        <option value="0">Creation Date</option>
+                        <option value="1">Priority</option>
+                    </select>
+                </label>
+                <section id="mainTasks" class="todo-column"></section>
+                <section id="itemInfo" class="todo-column hidden">
+                    <h3>Item Extra Info</h3>
+                    <input type="text" id="itemInfoTitle">
+                    <select id="todoPriority">
+                        <option value="3">None</option>
+                        <option value="2">Low</option>
+                        <option value="1">Medium</option>
+                        <option value="0">High</option>
+                    </select>
+                    <textarea placeholder="Description" id="itemInfoDesc" class="display-block"></textarea>
+                    <section id="subTasks"></section>
+                </section>
+            </section>
+        </main>
+        <footer class="footer site-footer">
+            <span>&copy; 2016 Naama Aharoni –  All rights reserved</span>
+        </footer>
+        <script src="scripts/pubsub.js"></script>
+        <script src="scripts/handlebars-v4.0.5.js"></script>
+
+        <script id="item-template" type="text/x-handlebars-template">
+            <i class="fa fa-arrows collapsed"></i>
+            <input type="checkbox" {{checked}}>
+            <input type="text" class="todo-title {{doneClass}}" value="{{title}}" />
+            <i tabindex="0" class="fa fa-trash-o"></i>
+            <span class="item-priority {{priority.className}}">{{priority.name}}</span>
+        </script>
+
+        <script id="lists-template" type="text/x-handlebars-template">
+            <section data-id="activeItemsArea">
+                <h3>Active Items</h3>
+                <ul data-id="activeItems" class="list-unstyled">
+                    {{#each items}}
+                    {{#unless this.isDone}}
+                    <li class="todo-item" id="{{this.id}}">{{{list_creator}}}</li>
+                    {{/unless}}
+                    {{/each}}
+                    <li data-id="newItem" class="todo-item new-item">
+                        <i class="fa fa-plus"></i>
+                        <input class="todo-title" type="text" placeholder="Add Item...">
+                    </li>
+                </ul>
+            </section>
+            <section data-id="doneItemsArea" class="{{hiddenClass}}">
+                <h3>Done Items</h3>
+                <ul data-id="doneItems" class="list-unstyled">
+                    {{#each items}}
+                    {{#if this.isDone}}
+                    <li class="todo-item" id="{{this.id}}">{{{list_creator}}}</li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </section>
+        </script>
+
+        <script src="scripts/todo.js"></script>
+    </body>
+</html>
