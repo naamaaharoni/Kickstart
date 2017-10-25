@@ -1,21 +1,17 @@
-let appToken;
-let editorSDK;
-
+var appToken;
+var sdk;
 module.exports = {
-    editorReady: (_editorSDK, _appToken) => {
+    editorReady: function (_editorSDK, _appToken) {
         appToken = _appToken;
-        editorSDK = _editorSDK;
+        sdk = _editorSDK;
     },
-
-    getAppManifest: function () {
-        return {}
-    },
-
-    onEvent: ({eventType, eventPayload}) => {
+    getAppManifest: function () { return ({}); },
+    onEvent: function (_a) {
+        var eventType = _a.eventType, eventPayload = _a.eventPayload;
         try {
             switch (eventType) {
                 case 'install':
-                    editorSDK.tpa.add.component(appToken, {
+                    sdk.tpa.add.component(appToken, {
                         componentType: 'PAGE',
                         page: {
                             pageId: 'order_history',
@@ -27,14 +23,13 @@ module.exports = {
                         }
                     });
                     break;
-                default: console.log(eventType, eventPayload)
+                default:
+                    window.console.log(eventType, eventPayload);
             }
-        } catch (e) {
-            throw e
+        }
+        catch (e) {
+            throw e;
         }
     },
-
-    getControllerPresets: () => {
-        return Promise.resolve([])
-    }
+    getControllerPresets: function () { return Promise.resolve([]); }
 };
