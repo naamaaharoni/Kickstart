@@ -2,8 +2,11 @@ var appToken;
 var sdk;
 module.exports = {
     editorReady: function (_editorSDK, _appToken) {
-        appToken = _appToken;
-        sdk = _editorSDK;
+        return new Promise(function (resolve, reject) {
+            appToken = _appToken;
+            sdk = _editorSDK;
+            resolve();
+        });
     },
     getAppManifest: function () { return ({}); },
     onEvent: function (_a) {
