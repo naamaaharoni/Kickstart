@@ -11,17 +11,19 @@ module.exports = {
     },
     install: function () {
         return new Promise(function (resolve, reject) {
-            sdk.tpa.add.component(appToken, {
-                componentType: 'PAGE',
-                page: {
-                    pageId: 'order_history',
-                    platform: {
-                        type: 'members',
-                        social: false,
-                        showInLoginMenu: true
-                    }
-                }
-            });
+            var membersAppDefId = '14cc59bc-f0b7-15b8-e1c7-89ce41d0e0c9';
+            var api = sdk.application.getPublicAPI(appToken, {appDefinitionId: membersAppDefId});
+            // sdk.tpa.add.component(appToken, {
+            //     componentType: 'PAGE',
+            //     page: {
+            //         pageId: 'order_history',
+            //         platform: {
+            //             type: 'members',
+            //             social: false,
+            //             showInLoginMenu: true
+            //         }
+            //     }
+            // });
             resolve();
         });
     },
