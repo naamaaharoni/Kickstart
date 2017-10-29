@@ -13,23 +13,21 @@ module.exports = {
         return new Promise(function (resolve, reject) {
             var membersAppDefId = '14cc59bc-f0b7-15b8-e1c7-89ce41d0e0c9';
             sdk.application.install(appToken, {appDefinitionId: membersAppDefId}).then(function () {
-                    sdk.application.getPublicAPI(appToken, {appDefinitionId: membersAppDefId}).then(function (api) {
-                        resolve(api);
-                    })
-                }
-            );
-            // sdk.tpa.add.component(appToken, {
-            //     componentType: 'PAGE',
-            //     page: {
-            //         pageId: 'order_history',
-            //         platform: {
-            //             type: 'members',
-            //             social: false,
-            //             showInLoginMenu: true
-            //         }
-            //     }
-            // });
-
+                var membersAPI = sdk.application.getPublicAPI(appToken, {appDefinitionId: membersAppDefId});
+                membersAPI.addSection({
+                    appDefinitionId: '1380b703-ce81-ff05-f115-39571d94dfcd',
+                    componentType: 'PAGE',
+                    shouldNavigate: false,
+                    page: {
+                        pageId: 'order_history',
+                        platform: {
+                            type: 'members',
+                            social: false,
+                            showInLoginMenu: true
+                        }
+                    }
+                }).then(resolve, reject)
+            });
         });
     },
     getAppManifest: function () { return ({}); },
