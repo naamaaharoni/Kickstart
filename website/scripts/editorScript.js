@@ -1,9 +1,29 @@
 var appToken;
 var sdk;
+
+var membersAppDefId = '14cc59bc-f0b7-15b8-e1c7-89ce41d0e0c9';
+
+function addOrders() {
+    var membersAPI = sdk.application.getPublicAPI(appToken, {appDefinitionId: membersAppDefId});
+    return membersAPI.addSection({
+        appDefinitionId: '1380b703-ce81-ff05-f115-39571d94dfcd',
+        componentType: 'PAGE',
+        shouldNavigate: false,
+        page: {
+            pageId: 'order_history',
+            platform: {
+                type: 'members',
+                social: false,
+                showInLoginMenu: true
+            }
+        }
+    });
+}
+
 module.exports = {
     editorReady: function (_editorSDK, _appToken) {
         return new Promise(function (resolve, reject) {
-            console.log('STORE PLATFORM APP IS UP')
+            console.log('STORE PLATFORM APP IS UP');
             appToken = _appToken;
             sdk = _editorSDK;
             resolve();
@@ -11,23 +31,16 @@ module.exports = {
     },
     install: function () {
         return new Promise(function (resolve, reject) {
-            var membersAppDefId = '14cc59bc-f0b7-15b8-e1c7-89ce41d0e0c9';
             sdk.application.install(appToken, {appDefinitionId: membersAppDefId}).then(function () {
-                var membersAPI = sdk.application.getPublicAPI(appToken, {appDefinitionId: membersAppDefId});
-                membersAPI.addSection({
-                    appDefinitionId: '1380b703-ce81-ff05-f115-39571d94dfcd',
-                    componentType: 'PAGE',
-                    shouldNavigate: false,
-                    page: {
-                        pageId: 'order_history',
-                        platform: {
-                            type: 'members',
-                            social: false,
-                            showInLoginMenu: true
-                        }
-                    }
-                }).then(resolve, reject)
+                addOrders().then(resolve, reject);
             });
+        });
+    },
+    handleOtherAppInstalled: function (options) {
+        return new Promise(function (resolve, reject) {
+            if (options.appDefinitionId === membersAppDefId) {
+                addOrders().then(resolve, reject);
+            }
         });
     },
     getAppManifest: function () { return ({}); },
