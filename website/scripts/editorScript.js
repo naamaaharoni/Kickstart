@@ -39,7 +39,7 @@ module.exports = {
     handleOtherAppInstalled: function (options) {
 
             if (options.appDefinitionId === membersAppDefId) {
-                addOrders().then(resolve, reject);
+                addOrders()
             }
 
     },
