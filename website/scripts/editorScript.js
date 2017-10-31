@@ -7,13 +7,9 @@ function addOrders() {
     var membersAPI = sdk.application.getPublicAPI(appToken, {appDefinitionId: membersAppDefId});
     return membersAPI.addSection({
         appDefinitionId: '1380b703-ce81-ff05-f115-39571d94dfcd',
-        page: {
-            pageId: 'order_history',
-            platform: {
-                social: false,
-                showInLoginMenu: true
-            }
-        }
+        pageId: 'order_history',
+        social: false,
+        showInLoginMenu: true
     });
 }
 
