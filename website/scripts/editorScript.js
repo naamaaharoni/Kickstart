@@ -37,11 +37,11 @@ module.exports = {
         });
     },
     handleOtherAppInstalled: function (options) {
-
+        return new Promise(function (resolve, reject) {
             if (options.appDefinitionId === membersAppDefId) {
-                addOrders()
+                addOrders().then(resolve, reject);
             }
-
+        });
     },
     getAppManifest: function () { return ({}); },
     onEvent: function (_a) {
