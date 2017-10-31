@@ -36,8 +36,13 @@ module.exports = {
     },
     handleOtherAppInstalled: function (options) {
         return new Promise(function (resolve, reject) {
-            if (options.appDefinitionId === membersAppDefId) {
-                addOrders().then(resolve, reject);
+            switch(options.appDefinitionId) {
+                case membersAppDefId: {
+                    addOrders().then(resolve, reject);
+                    break;
+                }
+                default:
+                    resolve();
             }
         });
     },
