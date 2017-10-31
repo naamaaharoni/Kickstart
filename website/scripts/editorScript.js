@@ -7,12 +7,9 @@ function addOrders() {
     var membersAPI = sdk.application.getPublicAPI(appToken, {appDefinitionId: membersAppDefId});
     return membersAPI.addSection({
         appDefinitionId: '1380b703-ce81-ff05-f115-39571d94dfcd',
-        componentType: 'PAGE',
-        shouldNavigate: false,
         page: {
             pageId: 'order_history',
             platform: {
-                type: 'members',
                 social: false,
                 showInLoginMenu: true
             }
