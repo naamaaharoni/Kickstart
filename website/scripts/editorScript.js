@@ -31,9 +31,7 @@ module.exports = {
     },
     install: function () {
         return new Promise(function (resolve, reject) {
-            sdk.application.install(appToken, {appDefinitionId: membersAppDefId}).then(function () {
-                addOrders().then(resolve, reject);
-            });
+            sdk.application.install(appToken, {appDefinitionId: membersAppDefId}).then(resolve, reject);
         });
     },
     handleOtherAppInstalled: function (options) {
