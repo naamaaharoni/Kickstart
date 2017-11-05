@@ -44,9 +44,6 @@ module.exports = {
         var eventType = _a.eventType, eventPayload = _a.eventPayload;
         try {
             switch (eventType) {
-                case 'install':
-
-                    break;
                 default:
                     window.console.log(eventType, eventPayload);
             }
