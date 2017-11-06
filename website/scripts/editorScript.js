@@ -27,31 +27,20 @@ module.exports = {
             }
         });
     },
-    handleOtherAppInstalled: function (options) {
-        return new Promise(function (resolve, reject) {
-            switch(options.appDefinitionId) {
-                case membersAppDefId: {
-                    addOrders().then(resolve, reject);
-                    break;
-                }
-                default:
-                    resolve();
-            }
-        });
-    },
     getAppManifest: function () { return ({}); },
     onEvent: function (args) {
+        debugger
         var eventType = args.eventType, eventPayload = args.eventPayload;
         try {
             switch (eventType) {
                 case 'appInstalled':
                     switch(eventPayload.appDefinitionId) {
                         case membersAppDefId: {
-                            addOrders().then(eventPayload.resolve, eventPayload.reject);
+                            addOrders().then(args.resolve, args.reject);
                             break;
                         }
                         default:
-                            eventPayload.resolve();
+                            args.resolve();
                     }
                     break;
                 default:
