@@ -23,8 +23,9 @@ module.exports = {
                 debugger
                 sdk.application.install(appToken, {appDefinitionId: membersAppDefId, origin: '1380b703-ce81-ff05-f115-39571d94dfcd'})
                     .then(resolve, reject);
+            } else {
+                resolve();
             }
-            resolve();
         });
     },
     handleOtherAppInstalled: function (options) {
