@@ -14,17 +14,16 @@ function addOrders() {
 }
 
 module.exports = {
-    editorReady: function (_editorSDK, _appToken) {
+    editorReady: function (_editorSDK, _appToken, options) {
         return new Promise(function (resolve, reject) {
             console.log('STORE PLATFORM APP IS UP');
             appToken = _appToken;
             sdk = _editorSDK;
+            if (options && options.firstInstall) {
+                sdk.application.install(appToken, {appDefinitionId: membersAppDefId, origin: '1380b703-ce81-ff05-f115-39571d94dfcd'})
+                    .then(resolve, reject);
+            }
             resolve();
-        });
-    },
-    install: function () {
-        return new Promise(function (resolve, reject) {
-            sdk.application.install(appToken, {appDefinitionId: membersAppDefId}).then(resolve, reject);
         });
     },
     handleOtherAppInstalled: function (options) {
