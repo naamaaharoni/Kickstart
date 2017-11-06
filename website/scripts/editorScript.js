@@ -20,7 +20,6 @@ module.exports = {
             appToken = _appToken;
             sdk = _editorSDK;
             if (options && options.firstInstall) {
-                debugger
                 sdk.application.install(appToken, {appDefinitionId: membersAppDefId, origin: '1380b703-ce81-ff05-f115-39571d94dfcd'})
                     .then(resolve, reject);
             } else {
@@ -41,12 +40,23 @@ module.exports = {
         });
     },
     getAppManifest: function () { return ({}); },
-    onEvent: function (_a) {
-        var eventType = _a.eventType, eventPayload = _a.eventPayload;
+    onEvent: function (args) {
+        var eventType = args.eventType, eventPayload = args.eventPayload;
         try {
             switch (eventType) {
+                case 'appInstalled':
+                    switch(eventPayload.appDefinitionId) {
+                        case membersAppDefId: {
+                            addOrders().then(eventPayload.resolve, eventPayload.reject);
+                            break;
+                        }
+                        default:
+                            eventPayload.resolve();
+                    }
+                    break;
                 default:
                     window.console.log(eventType, eventPayload);
+                    args.resolve();
             }
         }
         catch (e) {
