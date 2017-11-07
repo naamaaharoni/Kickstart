@@ -33,29 +33,15 @@ module.exports = {
         var eventType = args.eventType, eventPayload = args.eventPayload;
         try {
             switch (eventType) {
-                case 'appInstalled':
-                    switch(eventPayload.appDefinitionId) {
-                        case membersAppDefId: {
-                            addOrders().then(args.resolve, args.reject);
-                            break;
-                        }
-                        default:
-                            args.resolve();
-                    }
-                    break;
                 default:
                     window.console.log(eventType, eventPayload);
-                    args.resolve();
             }
         }
         catch (e) {
-            if (args.reject) {
-                args.reject()
-            }
             throw e;
         }
     },
-    handleSyncEvent: function (args) {
+    onTransactionalEvent: function (args) {
         var eventType = args.eventType, eventPayload = args.eventPayload;
         try {
             switch (eventType) {
