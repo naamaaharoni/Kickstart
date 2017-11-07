@@ -55,5 +55,28 @@ module.exports = {
             throw e;
         }
     },
+    handleSyncEvent: function (args) {
+        var eventType = args.eventType, eventPayload = args.eventPayload;
+        try {
+            switch (eventType) {
+                case 'appInstalled':
+                    switch(eventPayload.appDefinitionId) {
+                        case membersAppDefId: {
+                            return addOrders()
+                        }
+                        default:
+                            return Promise.resolve()
+                    }
+                    break;
+                default:
+                    window.console.log(eventType, eventPayload);
+                    return Promise.resolve()
+            }
+        }
+        catch (e) {
+            Promise.reject()
+            throw e;
+        }
+    },
     getControllerPresets: function () { return Promise.resolve([]); }
 };
