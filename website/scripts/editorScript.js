@@ -41,12 +41,12 @@ module.exports = {
             throw e;
         }
     },
-    onTransactionalEvent: function (args) {
-        var eventType = args.eventType, eventPayload = args.eventPayload;
+    handleAction: function (args) {
+        var type = args.type, payload = args.payload;
         try {
-            switch (eventType) {
+            switch (type) {
                 case 'appInstalled':
-                    switch(eventPayload.appDefinitionId) {
+                    switch(payload.appDefinitionId) {
                         case membersAppDefId: {
                             return addOrders()
                         }
@@ -55,7 +55,7 @@ module.exports = {
                     }
                     break;
                 default:
-                    window.console.log(eventType, eventPayload);
+                    window.console.log(type, payload);
                     return Promise.resolve()
             }
         }
