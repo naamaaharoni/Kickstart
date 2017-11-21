@@ -1,3 +1,4 @@
+(function () {
 var appToken;
 var sdk;
 
@@ -66,3 +67,4 @@ module.exports = {
     },
     getControllerPresets: function () { return Promise.resolve([]); }
 };
+})();
