@@ -12,12 +12,12 @@
                 appToken = _appToken;
                 sdk = _editorSDK;
                 if (options && options.firstInstall) {
-                    sdk.tpa.add.component({
+                    sdk.tpa.add.component(appToken, {
                         componentType: 'WIDGET',
                         copyStyle:true,
                         widget : {widgetId:'widget'}
                     }).then(()=> {
-                        sdk.tpa.add.component({
+                        sdk.tpa.add.component(appToken, {
                             componentType: 'PAGE',
                             page : {pageId:'page'}
                         }).then(resolve)
