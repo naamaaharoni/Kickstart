@@ -26,7 +26,7 @@
                 appToken = _appToken;
                 sdk = _editorSDK;
                 if (options && options.firstInstall) {
-                    addWidget.then(addHidden, addHidden).then(resolve)
+                    addWidget().then(addHidden, addHidden).then(resolve)
                 } else {
                     resolve();
                 }
