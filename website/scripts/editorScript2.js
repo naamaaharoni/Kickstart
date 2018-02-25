@@ -8,7 +8,6 @@
     module.exports = {
         editorReady: function (_editorSDK, _appToken, options) {
             return new Promise(function (resolve, reject) {
-                console.log('STORE PLATFORM APP IS UP');
                 appToken = _appToken;
                 sdk = _editorSDK;
                 if (options && options.firstInstall) {
@@ -45,7 +44,6 @@
             try {
                 switch (type) {
                     default:
-                        window.console.log(type, payload);
                         return Promise.resolve()
                 }
             }
