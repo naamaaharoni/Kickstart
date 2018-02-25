@@ -1,64 +1,59 @@
-let appToken;
-let editorSDK;
+(function () {
+    var appToken;
+    var sdk;
 
-module.exports = {
-    editorReady: (_editorSDK, _appToken) => {
-        appToken = _appToken;
-        editorSDK = _editorSDK;
-    },
+    var membersAppDefId = '14cc59bc-f0b7-15b8-e1c7-89ce41d0e0c9';
+    var ecomAppDefID = '1380b703-ce81-ff05-f115-39571d94dfcd';
 
-    getAppManifest: function () {
-        return {}
-    },
-
-    onEvent: ({eventType, eventPayload}) => {
-        try {
-            switch (eventType) {
-                case 'install':
-                   editorSDK.tpa.add.component(appToken, {
-                        componentType: 'PAGE',
-                        appDefinitionId: '135aad86-9125-6074-7346-29dc6a3c9bcf',
-                        page: {
-                            pageId: 'book_a_room', //replace with your app pageId
-                            isHidden: true
-                            // platform: {
-                            //     type: 'members',
-                            //     social: true, //change to false if page is not social
-                            //     showInLoginMenu: true
-                            // }
-                        }
-                    });
-//                     editorSDK.tpa.add.component(appToken, {
-//                         componentType: 'PAGE',
-//                         appDefinitionId: '1380b703-ce81-ff05-f115-39571d94dfcd',
-//                         page: {
-//                             isHidden: true,
-//                             pageId: 'product_gallery', //replace with your app pageId
-// /*                            platform: {
-//                                 type: 'members',
-//                                 social: true, //change to false if page is not social
-//                                 showInLoginMenu: true
-//                             }*/
-//                         }
-//                     });
-                    // editorSDK.tpa.add.component(appToken, {
-                    //     componentType: 'WIDGET',
-                    //     appDefinitionId: '14409595-f076-4753-8303-9a86f9f71469',
-                    //     widget: {
-                    //         widgetId: 'wix_vod_develop', //replace with your app pageId
-                    //         allPages: true
-                    //     }
-                    // });
-
-                    break;
-                default: console.log(eventType, eventPayload)
+    module.exports = {
+        editorReady: function (_editorSDK, _appToken, options) {
+            return new Promise(function (resolve, reject) {
+                console.log('STORE PLATFORM APP IS UP');
+                appToken = _appToken;
+                sdk = _editorSDK;
+                if (options && options.firstInstall) {
+                    sdk.tpa.add.component({
+                        componentType: 'WIDGET',
+                        copyStyle:true,
+                        widget : {widgetId:'widget'}
+                    }).then(()=> {
+                        sdk.tpa.add.component({
+                            componentType: 'PAGE',
+                            page : {pageId:'page'}
+                        }).then(resolve)
+                    })
+                } else {
+                    resolve();
+                }
+            });
+        },
+        getAppManifest: function () { return ({}); },
+        onEvent: function (args) {
+            var eventType = args.eventType, eventPayload = args.eventPayload;
+            try {
+                switch (eventType) {
+                    default:
+                        window.console.log(eventType, eventPayload);
+                }
             }
-        } catch (e) {
-            throw e
-        }
-    },
-
-    getControllerPresets: () => {
-        return Promise.resolve([])
-    }
-};
+            catch (e) {
+                throw e;
+            }
+        },
+        handleAction: function (args) {
+            var type = args.type, payload = args.payload;
+            try {
+                switch (type) {
+                    default:
+                        window.console.log(type, payload);
+                        return Promise.resolve()
+                }
+            }
+            catch (e) {
+                Promise.reject()
+                throw e;
+            }
+        },
+        getControllerPresets: function () { return Promise.resolve([]); }
+    };
+})();
