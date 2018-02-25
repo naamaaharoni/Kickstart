@@ -13,6 +13,7 @@ function addOrders() {
     //     social: false,
     //     showInLoginMenu: true
     // });
+    return Promise.resolve();
 }
 
 module.exports = {
