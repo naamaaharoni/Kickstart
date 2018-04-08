@@ -306,14 +306,23 @@ extendCompSchema('Users', {
     validations: {
       type: true
     }
+  },
+  language: {
+    schemaType: ['string'],
+    maxLength: 2,
+    minLength: 2,
+    validations: {
+      type: true,
+      length: true
+    }
   }
 });
 
 var Users = function () {
-  function Users(controllerId) {
+  function Users(appDefId) {
     _classCallCheck(this, Users);
 
-    this.controllerId = controllerId;
+    this.appDefId = appDefId;
   }
 
   /**
@@ -537,16 +546,16 @@ var Users = function () {
       if (!validation.validate('Users', 'onLogin', { onLogin: callback })) {
         return;
       }
-      var RMI = platformUtils.getRMI('wix-users.onLogin');
-      RMI.addOnUserLoginCallback(function () {
+      var RGI = platformUtils.getRGI();
+      RGI.addOnUserLoginCallback(function () {
         callback(_this.currentUser);
       });
     }
   }, {
     key: 'currentUser',
     get: function get() {
-      var RMI = platformUtils.getRMI('wix-users.currentUser');
-      var siteMemberData = RMI.getSiteMemberData(this.controllerId);
+      var RGI = platformUtils.getRGI();
+      var siteMemberData = RGI.getSiteMemberData(this.appDefId);
       return new _user2.default(siteMemberData);
     }
   }]);
@@ -637,8 +646,8 @@ var User = function () {
       var _core = _extends({}, _wixcodeSdk.core),
           platformUtils = _core.platformUtils;
 
-      var RMI = platformUtils.getRMI('wix-users module');
-      this.id = _lodash2.default.get(RMI.getSessionInfo(), 'svSession');
+      var RGI = platformUtils.getRGI();
+      this.id = _lodash2.default.get(RGI.getSessionInfo(), 'svSession');
       this.loggedIn = false;
       this.role = _consts.UserRoles.VISITOR;
     }
