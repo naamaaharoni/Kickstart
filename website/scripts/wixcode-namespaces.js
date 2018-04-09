@@ -588,7 +588,7 @@ var _core = _extends({}, _wixcodeSdk.core),
 
 _module.register('wix-fo', function A() {
   _classCallCheck(this, A);
-});
+}, 'foo');
 
 /***/ }),
 /* 5 */
@@ -610,7 +610,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _core = _extends({}, _wixcodeSdk.core),
     _module = _core.module;
 
-_module.register('wix-users', _users2.default);
+_module.register('wix-users', _users2.default, 'user');
 
 /***/ }),
 /* 6 */
