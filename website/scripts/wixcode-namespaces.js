@@ -552,6 +552,11 @@ var Users = function () {
       });
     }
   }, {
+    key: 'naamaTest',
+    value: function naamaTest() {
+      console.log(111111111111);
+    }
+  }, {
     key: 'currentUser',
     get: function get() {
       var RGI = platformUtils.getRGI();
