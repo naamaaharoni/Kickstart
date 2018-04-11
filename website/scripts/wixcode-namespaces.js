@@ -898,12 +898,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_wixcode_namespaces_foo_dist_index__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_wixcode_namespaces_foo_dist_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_wixcode_namespaces_foo_dist_index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_wixcode_namespaces_users_dist_wixcode_users__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_wixcode_namespaces_users_dist_wixcode_users___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_wixcode_namespaces_users_dist_wixcode_users__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Foo", function() { return __WEBPACK_IMPORTED_MODULE_0_wixcode_namespaces_foo_dist_index___default.a; });
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Users", function() { return __WEBPACK_IMPORTED_MODULE_1_wixcode_namespaces_users_dist_wixcode_users___default.a; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_wixcode_foo_dist_index__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_wixcode_foo_dist_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_wixcode_foo_dist_index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_wixcode_users_dist_wixcode_users__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_wixcode_users_dist_wixcode_users___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_wixcode_users_dist_wixcode_users__);
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Foo", function() { return __WEBPACK_IMPORTED_MODULE_0_wixcode_foo_dist_index___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Users", function() { return __WEBPACK_IMPORTED_MODULE_1_wixcode_users_dist_wixcode_users___default.a; });
 
 
 
