@@ -186,7 +186,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var _core = _extends({}, _wixcodeSdk.core),
     _module = _core.module;
 
-_module.register('wix-fo', function A() {
+_module.register('wix-fo', 'fo', function A() {
   _classCallCheck(this, A);
 });
 
@@ -879,7 +879,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _core = _extends({}, _wixcodeSdk.core),
     _module = _core.module;
 
-_module.register('wix-users', _users2.default, 'user');
+_module.register('wix-users', 'user', _users2.default);
 
 /***/ })
 /******/ ]);
