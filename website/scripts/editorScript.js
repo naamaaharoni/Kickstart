@@ -114,18 +114,7 @@ module.exports = {
         });
     },
     getAppManifest: getAppManifest,
-    onEvent: function (args) {
-        var eventType = args.eventType, eventPayload = args.eventPayload;
-        try {
-            switch (eventType) {
-                default:
-                    window.console.log(eventType, eventPayload);
-            }
-        }
-        catch (e) {
-            throw e;
-        }
-    },
+    onEvent: function (args) {},
     handleAction: function (args) {
         var type = args.type, payload = args.payload;
         try {
