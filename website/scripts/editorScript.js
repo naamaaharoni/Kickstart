@@ -104,7 +104,7 @@ module.exports = {
                         skin: 'platform.components.skins.controllerSkin'
                     }
                 }
-                 const pageRef = await editorSDK.pages.getCurrent();
+                 const pageRef = await sdk.pages.getCurrent();
                  await sdk.components.add('token', {pageRef, componentDefinition: controllerDef, customId: 'controller_test'});
                 // sdk.application.install(appToken, {appDefinitionId: membersAppDefId, initiatorAppDefinitionId: ecomAppDefID})
                 //     .then(resolve, reject);
