@@ -50,7 +50,7 @@ module.exports = {
                     componentType: 'platform.components.AppController',
                     data: {
                         type: 'AppController',
-                        applicationId: appDefinitionId,
+                        applicationId: '1380b703-ce81-ff05-f115-39571d94dfcd',
                         name: 'mockController',
                         controllerType: 'mockController'
                     },
