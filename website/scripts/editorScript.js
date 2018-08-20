@@ -106,6 +106,7 @@ module.exports = {
                 }
                  const pageRef = await sdk.pages.getCurrent();
                  await sdk.components.add('token', {pageRef, componentDefinition: controllerDef, customId: 'controller_test'});
+                resolve();
                 // sdk.application.install(appToken, {appDefinitionId: membersAppDefId, initiatorAppDefinitionId: ecomAppDefID})
                 //     .then(resolve, reject);
             } else {
