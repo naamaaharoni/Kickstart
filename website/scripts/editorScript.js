@@ -16,21 +16,104 @@ function addOrders() {
     return Promise.resolve();
 }
 
+function getAppManifest() {
+    return {
+        controllersStageData: {
+            mockController: {
+                default: {
+                    visibility: 'EDITOR'
+                }
+            }
+        }
+    }
+}
+
 module.exports = {
-    editorReady: function (_editorSDK, _appToken, options) {
-        return new Promise(function (resolve, reject) {
+    editorReady: async function (_editorSDK, _appToken, options) {
+        return new Promise(async function (resolve, reject) {
             console.log('STORE PLATFORM APP IS UP');
             appToken = _appToken;
             sdk = _editorSDK;
             if (options && options.firstInstall) {
-                sdk.application.install(appToken, {appDefinitionId: membersAppDefId, initiatorAppDefinitionId: ecomAppDefID})
-                    .then(resolve, reject);
+                const controllerDef = {
+                    type: 'Component',
+                    skin: 'platform.components.skins.controllerSkin',
+                    layout: {
+                        width: 40,
+                        height: 40,
+                        x: 20,
+                        y: 15,
+                        scale: 1,
+                        rotationInDegrees: 0,
+                        fixedPosition: false
+                    },
+                    componentType: 'platform.components.AppController',
+                    data: {
+                        type: 'AppController',
+                        applicationId: appDefinitionId,
+                        name: 'mockController',
+                        controllerType: 'mockController'
+                    },
+                    metaData: {
+                        isPreset: false,
+                        schemaVersion: '1.0',
+                        isHidden: false
+                    },
+                    style: {
+                        type: 'TopLevelStyle',
+                        metaData: {
+                            isPreset: false,
+                            schemaVersion: '1.0',
+                            isHidden: false
+                        },
+                        style: {
+                            groups: {},
+                            properties: {
+                                'alpha-bg': '1',
+                                'alpha -bgh': '1',
+                                'alpha - brd': '1',
+                                'alpha - brdh': '1',
+                                'alpha - txt': '1',
+                                'alpha - txth': '1',
+                                bg: '#3D9BE9',
+                                bgh: '#2B689C',
+                                'boxShadowToggleOn -shd': 'false',
+                                brd: '#2B689C',
+                                brdh: '#3D9BE9',
+                                brw: '0px',
+                                fnt: 'normal normal normal 14px/1.4em raleway',
+                                rd: '20px',
+                                shd: '0 1px 4px rgba(0, 0, 0, 0.6);',
+                                txt: '#FFFFFF',
+                                txth: '#FFFFFF'
+                            },
+                            propertiesSource: {
+                                bg: 'value',
+                                bgh: 'value',
+                                brd: 'value',
+                                brdh: 'value',
+                                brw: 'value',
+                                fnt: 'value',
+                                rd: 'value',
+                                shd: 'value',
+                                txt: 'value',
+                                txth: 'value'
+                            }
+                        },
+                        componentClassName: 'platform.components.AppController',
+                        skin: 'platform.components.skins.controllerSkin'
+                    }
+                }
+                 const pageRef = await editorSDK.pages.getCurrent();
+                 await sdk.components.add('token', {pageRef, componentDefinition: controllerDef, customId: 'controller_test'});
+                // sdk.application.install(appToken, {appDefinitionId: membersAppDefId, initiatorAppDefinitionId: ecomAppDefID})
+                //     .then(resolve, reject);
             } else {
                 resolve();
             }
         });
     },
-    getAppManifest: function () { return ({}); },
+    getAppManifest: getAppManifest,
     onEvent: function (args) {
         var eventType = args.eventType, eventPayload = args.eventPayload;
         try {
