@@ -23,15 +23,13 @@ function getAppManifest() {
                 default: {
                     visibility: 'EDITOR',
                     gfpp: {
-                        desktop: {
-                            mainAction: {
-                                actionId: 'UPGRADE',
-                                label: 'Upgrade'
-                            },
-                            mainAction2: {
-                                actionId: 'UPGRADE',
-                                label: 'Upgrade'
-                            }
+                        mainAction: {
+                            actionId: 'UPGRADE',
+                            label: 'Upgrade'
+                        },
+                        mainAction2: {
+                            actionId: 'UPGRADE',
+                            label: 'Upgrade'
                         }
                     }
                 }
