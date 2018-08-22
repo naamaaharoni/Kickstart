@@ -21,7 +21,19 @@ function getAppManifest() {
         controllersStageData: {
             mockController: {
                 default: {
-                    visibility: 'EDITOR'
+                    visibility: 'EDITOR',
+                    gfpp: {
+                        desktop: {
+                            mainAction: {
+                                actionId: 'UPGRADE',
+                                label: 'Upgrade'
+                            },
+                            mainAction2: {
+                                actionId: 'UPGRADE',
+                                label: 'Upgrade'
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -35,7 +47,7 @@ module.exports = {
             appToken = _appToken;
             sdk = _editorSDK;
             if (options && options.firstInstall) {
-                const controllerDef = {
+                var controllerDef = {
                     type: 'Component',
                     skin: 'platform.components.skins.controllerSkin',
                     layout: {
@@ -51,8 +63,8 @@ module.exports = {
                     data: {
                         type: 'AppController',
                         applicationId: '1380b703-ce81-ff05-f115-39571d94dfcd',
-                        name: 'mockController',
-                        controllerType: 'mockController'
+                        name: 'editorController',
+                        controllerType: 'editorController'
                     },
                     metaData: {
                         isPreset: false,
@@ -104,8 +116,8 @@ module.exports = {
                         skin: 'platform.components.skins.controllerSkin'
                     }
                 }
-                 const pageRef = await sdk.pages.getCurrent();
-                 await sdk.components.add('token', {pageRef, componentDefinition: controllerDef, customId: 'controller_test'});
+                var pageRef = await editorSDK.getBoundedSDK().pages.getCurrent();
+                await editorSDK.getBoundedSDK().components.add('token', {pageRef, componentDefinition: controllerDef, customId: 'controller_test'});
                 resolve();
                 // sdk.application.install(appToken, {appDefinitionId: membersAppDefId, initiatorAppDefinitionId: ecomAppDefID})
                 //     .then(resolve, reject);
