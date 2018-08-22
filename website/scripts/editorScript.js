@@ -24,12 +24,12 @@ function getAppManifest() {
                     visibility: 'EDITOR',
                     gfpp: {
                         mainAction: {
-                            actionId: 'UPGRADE',
-                            label: 'Upgrade'
+                            actionId: 'action1',
+                            label: 'label1'
                         },
                         mainAction2: {
-                            actionId: 'UPGRADE',
-                            label: 'Upgrade'
+                            actionId: 'action2',
+                            label: 'label2'
                         }
                     }
                 }
