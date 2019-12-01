@@ -25,9 +25,9 @@ function getAppManifest() {
                         '*': { //role
                             gfpp: {
                                 desktop: {
-                                    mainAction1:  {
+                                    mainAction2:  {
                                         "actionId":"1",
-                                        "label":"App action1"
+                                        "label":"App action2"
                                     }
                                 }
                             }
