@@ -1,6 +1,6 @@
 (function () {
 var appToken;
-var sdk;
+var editorSDK;
 
 var membersAppDefId = '14cc59bc-f0b7-15b8-e1c7-89ce41d0e0c9';
 var ecomAppDefID = '1380b703-ce81-ff05-f115-39571d94dfcd';
@@ -19,17 +19,22 @@ function addOrders() {
 function getAppManifest() {
     return {
         controllersStageData: {
-            mockController: {
+            fooBar: { //controllerType
                 default: {
-                    visibility: 'EDITOR',
-                    gfpp: {
-                        mainAction: {
-                            actionId: 'action1',
-                            label: 'label1'
-                        },
-                        mainAction2: {
-                            actionId: 'action2',
-                            label: 'label2'
+                    connections: {
+                        '*': { //role
+                            gfpp: {
+                                desktop: {
+                                    mainAction1:  {
+                                        "actionId":"1",
+                                        "label":"App action1"
+                                    },
+                                    mainAction2:  {
+                                        "actionId":"2",
+                                        "label":"App action2"
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -41,13 +46,11 @@ function getAppManifest() {
 module.exports = {
     editorReady: async function (_editorSDK, _appToken, options) {
         return new Promise(async function (resolve, reject) {
-            console.log('STORE PLATFORM APP IS UP');
             appToken = _appToken;
-            sdk = _editorSDK;
+            editorSDK = _editorSDK;
             if (options && options.firstInstall) {
-                var controllerDef = {
+                const controller = appDefID => ({
                     type: 'Component',
-                    skin: 'platform.components.skins.controllerSkin',
                     layout: {
                         width: 40,
                         height: 40,
@@ -60,65 +63,30 @@ module.exports = {
                     componentType: 'platform.components.AppController',
                     data: {
                         type: 'AppController',
-                        applicationId: '1380b703-ce81-ff05-f115-39571d94dfcd',
-                        name: 'editorController',
-                        controllerType: 'editorController'
+                        applicationId: appDefID,
+                        name: 'item',
+                        controllerType: 'fooBar'
                     },
                     metaData: {
                         isPreset: false,
                         schemaVersion: '1.0',
                         isHidden: false
                     },
-                    style: {
-                        type: 'TopLevelStyle',
-                        metaData: {
-                            isPreset: false,
-                            schemaVersion: '1.0',
-                            isHidden: false
-                        },
-                        style: {
-                            groups: {},
-                            properties: {
-                                'alpha-bg': '1',
-                                'alpha -bgh': '1',
-                                'alpha - brd': '1',
-                                'alpha - brdh': '1',
-                                'alpha - txt': '1',
-                                'alpha - txth': '1',
-                                bg: '#3D9BE9',
-                                bgh: '#2B689C',
-                                'boxShadowToggleOn -shd': 'false',
-                                brd: '#2B689C',
-                                brdh: '#3D9BE9',
-                                brw: '0px',
-                                fnt: 'normal normal normal 14px/1.4em raleway',
-                                rd: '20px',
-                                shd: '0 1px 4px rgba(0, 0, 0, 0.6);',
-                                txt: '#FFFFFF',
-                                txth: '#FFFFFF'
-                            },
-                            propertiesSource: {
-                                bg: 'value',
-                                bgh: 'value',
-                                brd: 'value',
-                                brdh: 'value',
-                                brw: 'value',
-                                fnt: 'value',
-                                rd: 'value',
-                                shd: 'value',
-                                txt: 'value',
-                                txth: 'value'
-                            }
-                        },
-                        componentClassName: 'platform.components.AppController',
-                        skin: 'platform.components.skins.controllerSkin'
-                    }
-                }
-                var pageRef = await editorSDK.getBoundedSDK().pages.getCurrent();
-                await editorSDK.getBoundedSDK().components.add('token', {pageRef, componentDefinition: controllerDef, customId: 'controller_test'});
-                resolve();
-                // sdk.application.install(appToken, {appDefinitionId: membersAppDefId, initiatorAppDefinitionId: ecomAppDefID})
-                //     .then(resolve, reject);
+                    style: 'controller1'
+
+                })
+                const currentPageRef = await editorSDK.document.pages.getCurrent();
+                const controllerRef = await editorSDK.components.add('appToken', {componentDefinition: controller(appDefinitionId), pageRef: currentPageRef})
+                await editorSDK.controllers.connect('appToken', {
+                    connectToRef: {
+                        id: 'comp-k3hbzqem',
+                        type: 'DESKTOP'
+                    },
+                    controllerRef,
+                    role: 'stateBox',
+                    connectionConfig: {},
+                    isPrimary: true
+                })
             } else {
                 resolve();
             }
@@ -130,15 +98,15 @@ module.exports = {
         var type = args.type, payload = args.payload;
         try {
             switch (type) {
-                case 'appInstalled':
-                    switch(payload.appDefinitionId) {
-                        case membersAppDefId: {
-                            return addOrders()
-                        }
-                        default:
-                            return Promise.resolve()
-                    }
-                    break;
+                // case 'appInstalled':
+                //     switch(payload.appDefinitionId) {
+                //         case membersAppDefId: {
+                //             return addOrders()
+                //         }
+                //         default:
+                //             return Promise.resolve()
+                //     }
+                //     break;
                 default:
                     window.console.log(type, payload);
                     return Promise.resolve()
