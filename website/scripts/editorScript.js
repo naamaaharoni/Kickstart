@@ -28,10 +28,6 @@ function getAppManifest() {
                                     mainAction1:  {
                                         "actionId":"1",
                                         "label":"App action1"
-                                    },
-                                    mainAction2:  {
-                                        "actionId":"2",
-                                        "label":"App action2"
                                     }
                                 }
                             }
