@@ -87,6 +87,7 @@ module.exports = {
                     connectionConfig: {},
                     isPrimary: true
                 })
+                resolve()
             } else {
                 resolve();
             }
