@@ -76,7 +76,7 @@ module.exports = {
 
                 })
                 const currentPageRef = await editorSDK.document.pages.getCurrent();
-                const controllerRef = await editorSDK.components.add('appToken', {componentDefinition: controller(appDefinitionId), pageRef: currentPageRef})
+                const controllerRef = await editorSDK.components.add('appToken', {componentDefinition: controller(appToken), pageRef: currentPageRef})
                 await editorSDK.controllers.connect('appToken', {
                     connectToRef: {
                         id: 'comp-k3hbzqem',
