@@ -75,7 +75,7 @@ module.exports = {
                 const controllerRef = await editorSDK.components.add('appToken', {componentDefinition: controller(appToken), pageRef: currentPageRef})
                 await editorSDK.controllers.connect('appToken', {
                     connectToRef: {
-                        id: 'comp-k3n2xyca',
+                        id: 'comp-k3n3jqhi',
                         type: 'DESKTOP'
                     },
                     controllerRef,
