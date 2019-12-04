@@ -25,10 +25,10 @@ function getAppManifest() {
                         '*': { //role
                             gfpp: {
                                 desktop: {
-                                    mainAction2:  {
-                                        "actionId":"1",
-                                        "label":"App action2"
-                                    }
+                                    // mainAction2:  {
+                                    //     "actionId":"1",
+                                    //     "label":"App action2"
+                                    // }
                                 }
                             }
                         }
