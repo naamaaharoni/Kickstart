@@ -21,6 +21,10 @@ function getAppManifest() {
         controllersStageData: {
             fooBar: { //controllerType
                 default: {
+                    firstTimeExperience: {
+                        contentTitle: 'test title',
+                        content: 'test content'
+                    },
                     connections: {
                         '*': { //role
                             gfpp: {
