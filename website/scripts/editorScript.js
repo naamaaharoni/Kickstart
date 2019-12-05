@@ -27,6 +27,10 @@ function getAppManifest() {
                     },
                     connections: {
                         '*': { //role
+                            firstTimeExperience: {
+                                contentTitle: 'test title',
+                                content: 'test content'
+                            },
                             gfpp: {
                                 desktop: {
                                     // mainAction2:  {
