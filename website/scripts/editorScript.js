@@ -22,12 +22,14 @@ function getAppManifest() {
             fooBar: { //controllerType
                 default: {
                     firstTimeExperience: {
+                        hidden: true,
                         contentTitle: 'test title',
                         content: 'test content'
                     },
                     connections: {
                         '*': { //role
                             firstTimeExperience: {
+                                hidden: true,
                                 contentTitle: 'test title',
                                 content: 'test content'
                             },
